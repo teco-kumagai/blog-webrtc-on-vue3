@@ -14,7 +14,7 @@
     </div>
     <div class="select-container">
       <label>音声出力デバイス：</label>
-      <select id="audiooutput" @change="onSelectedValueChange">
+      <select id="audiooutput" @change="onAudioOutputChange">
         <option
           v-for="item in audioOutput"
           :key="item.value"
@@ -142,11 +142,41 @@ export default defineComponent({
         .catch(handleError);
     };
 
+    // 音声出力デバイスを変更する関数
+    const attachSinkId = () => {
+      const selectedAudioOutput = getSelectedValue("audiooutput");
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const videoElement = document.querySelector<any | null>("video");
+      if (
+        selectedAudioOutput &&
+        videoElement &&
+        videoElement.setSinkId !== "undefined"
+      ) {
+        videoElement
+          .setSinkId(selectedAudioOutput)
+          .then(() =>
+            console.log(
+              "音声出力デバイスを切り替えました。\n",
+              "audiooutput:",
+              selectedAudioOutput
+            )
+          )
+          .catch(handleError);
+      } else {
+        console.warn(
+          "このブラウザは音声出力デバイスの切り替えに対応していません。"
+        );
+      }
+    };
+
     // ドロップダウンリストの項目が変更された際のハンドラ
     const onSelectedValueChange = async () => {
       await start();
       await getDevices();
     };
+
+    // 音声出力デバイスのドロップダウンリストが変更された際のハンドラ
+    const onAudioOutputChange = () => attachSinkId();
 
     // このコンポーネントが読み込まれた際に実行する初期処理
     onMounted(async () => {
@@ -160,6 +190,7 @@ export default defineComponent({
       audioOutput,
       videoInput,
       onSelectedValueChange,
+      onAudioOutputChange,
     };
   },
 });
