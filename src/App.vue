@@ -1,18 +1,21 @@
 <template>
   <!-- <Camera /> -->
-  <DeviceSelection />
+  <!-- <DeviceSelection /> -->
+  <MediaDevice />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 // import Camera from "./components/Camera.vue";
-import DeviceSelection from "./components/DeviceSelection.vue";
+// import DeviceSelection from "./components/DeviceSelection.vue";
+import MediaDevice from "./components/MediaDevice.vue";
 
 export default defineComponent({
   name: "App",
   components: {
     // Camera,
-    DeviceSelection,
+    // DeviceSelection,
+    MediaDevice,
   },
 });
 </script>
