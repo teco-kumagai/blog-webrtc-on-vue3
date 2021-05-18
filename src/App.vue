@@ -1,16 +1,21 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <!-- <Camera /> -->
+  <!-- <DeviceSelection /> -->
+  <MediaDevice />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+// import Camera from "./components/Camera.vue";
+// import DeviceSelection from "./components/DeviceSelection.vue";
+import MediaDevice from "./components/MediaDevice.vue";
 
 export default defineComponent({
   name: "App",
   components: {
-    HelloWorld,
+    // Camera,
+    // DeviceSelection,
+    MediaDevice,
   },
 });
 </script>
