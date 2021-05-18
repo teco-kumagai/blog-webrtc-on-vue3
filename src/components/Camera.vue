@@ -34,11 +34,7 @@ export default defineComponent({
 
     // Promise の処理で reject された際に実行する関数
     const handleError = (error: Error) => {
-      console.error(
-        "navigator.MediaDevices.getUserMedia error: ",
-        error.message,
-        error.name
-      );
+      console.error(error.name, error.message);
     };
 
     // MediaStream の取得処理を実行

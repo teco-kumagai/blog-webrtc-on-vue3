@@ -69,16 +69,14 @@ export default defineComponent({
     const videoInput = computed(() => generateOptionValue("videoinput"));
 
     // 取得したデバイス情報を変数に保存する関数
-    const gotDevices = (devices: MediaDeviceInfo[]) =>
-      (deviceList.value = devices);
+    const gotDevices = (devices: MediaDeviceInfo[]) => {
+      console.log("取得されたデバイス情報\n", devices);
+      deviceList.value = devices;
+    };
 
     // Promise の処理で reject された際に実行する関数
     const handleError = (error: Error) => {
-      console.error(
-        "navigator.MediaDevices method failed. ",
-        error.message,
-        error.name
-      );
+      console.error(error.name, error.message);
     };
 
     // 利用可能な音声入力、音声出力、映像入力デバイスを取得
