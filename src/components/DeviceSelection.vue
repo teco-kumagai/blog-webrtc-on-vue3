@@ -2,7 +2,7 @@
   <div class="select-root">
     <div class="select-container">
       <label>音声入力デバイス：</label>
-      <select id="audioinput" @change="onSelectedValueChange">
+      <select id="audioinput">
         <option
           v-for="item in audioInput"
           :key="item.value"
@@ -14,7 +14,7 @@
     </div>
     <div class="select-container">
       <label>音声出力デバイス：</label>
-      <select id="audiooutput" @change="onSelectedValueChange">
+      <select id="audiooutput">
         <option
           v-for="item in audioOutput"
           :key="item.value"
@@ -26,7 +26,7 @@
     </div>
     <div class="select-container">
       <label>映像入力デバイス：</label>
-      <select id="videoinput" @change="onSelectedValueChange">
+      <select id="videoinput">
         <option
           v-for="item in videoInput"
           :key="item.value"
